@@ -584,17 +584,25 @@
        Mantém a estrutura e os seletores usados pelo JavaScript,
        mas transforma a apresentação em uma experiência de hotel boutique. */
     :root {
-      --marinho: #102d35;
-      --marinho-profundo: #092129;
-      --verde: #1e4a4b;
-      --latão: #b89454;
-      --latão-claro: #d5b779;
-      --marfim: #f6f3ed;
-      --papel: #fffdfa;
-      --texto: #26373a;
-      --muted: #6e7978;
-      --linha: rgba(16, 45, 53, 0.13);
-      --sombra: 0 18px 50px rgba(21, 44, 47, 0.09);
+      --color-moss-dark: #3F4A3C;
+      --color-moss: #66705D;
+      --color-cream: #F3EBDD;
+      --color-beige: #E5D8C6;
+      --color-sand: #C8B79E;
+      --color-text: #252721;
+      --color-text-secondary: #655E54;
+      --color-white-warm: #FAF8F3;
+      --marinho: var(--color-moss-dark);
+      --marinho-profundo: var(--color-moss-dark);
+      --verde: var(--color-moss);
+      --latão: var(--color-sand);
+      --latão-claro: var(--color-beige);
+      --marfim: var(--color-cream);
+      --papel: var(--color-white-warm);
+      --texto: var(--color-text);
+      --muted: var(--color-text-secondary);
+      --linha: rgba(63, 74, 60, 0.15);
+      --sombra: 0 18px 50px rgba(63, 74, 60, 0.09);
     }
 
     html {
@@ -609,7 +617,7 @@
     }
 
     body::before {
-      background: linear-gradient(180deg, rgba(246, 243, 237, 0.94), rgba(246, 243, 237, 0.98));
+      background: linear-gradient(180deg, rgba(243, 235, 221, 0.94), rgba(243, 235, 221, 0.98));
       z-index: -1;
     }
 
@@ -620,11 +628,11 @@
       justify-content: center;
       align-items: center;
       padding: 86px 24px 76px;
-      background-image: linear-gradient(105deg, rgba(7, 31, 38, 0.96), rgba(16, 55, 59, 0.75)), url('../imagens/vista externa.jpg');
+      background-image: linear-gradient(105deg, rgba(37, 39, 33, 0.96), rgba(63, 74, 60, 0.75)), url('../imagens/vista externa.jpg');
       background-size: cover;
       background-position: center;
-      border-bottom: 1px solid rgba(213, 183, 121, 0.75);
-      box-shadow: 0 12px 30px rgba(9, 33, 41, 0.13);
+      border-bottom: 1px solid rgba(200, 183, 158, 0.75);
+      box-shadow: 0 12px 30px rgba(63, 74, 60, 0.13);
     }
 
     header::after {
@@ -649,7 +657,7 @@
 
     header p {
       margin-top: 12px;
-      color: #f5e9cf;
+      color: var(--color-beige);
       font-size: 1.02rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -714,7 +722,7 @@
 
     .quarto-card:hover {
       transform: translateY(-7px);
-      box-shadow: 0 24px 56px rgba(21, 44, 47, 0.16);
+      box-shadow: 0 24px 56px rgba(63, 74, 60, 0.16);
     }
 
     .quarto-card img {
@@ -772,9 +780,9 @@
     .chat-input-area input {
       min-height: 48px;
       padding: 12px 14px;
-      border: 1px solid #cbd2cf;
+      border: 1px solid var(--color-sand);
       border-radius: 0;
-      background: #fff;
+      background: var(--color-white-warm);
       color: var(--texto);
     }
 
@@ -782,7 +790,7 @@
     .reserva-form select:focus,
     .chat-input-area input:focus {
       border-color: var(--latão);
-      box-shadow: 0 0 0 3px rgba(184, 148, 84, 0.13);
+      box-shadow: 0 0 0 3px rgba(102, 112, 93, 0.13);
     }
 
     .reserva-form button,
@@ -791,7 +799,7 @@
       padding: 12px 24px;
       border-radius: 0;
       background: var(--marinho);
-      color: #fff;
+      color: var(--color-white-warm);
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -801,7 +809,7 @@
     .reserva-form button:hover,
     .chat-input-area button:hover {
       opacity: 1;
-      background: var(--latão);
+      background: var(--color-moss);
       transform: translateY(-2px);
     }
 
@@ -812,12 +820,12 @@
     .servico-card {
       padding: 27px 16px;
       border-radius: 2px;
-      box-shadow: 0 8px 25px rgba(21, 44, 47, 0.06);
+      box-shadow: 0 8px 25px rgba(63, 74, 60, 0.06);
     }
 
     .servico-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(184, 148, 84, 0.55);
+      border-color: rgba(200, 183, 158, 0.55);
     }
 
     .servico-card .emoji {
@@ -842,7 +850,7 @@
       border-left: 3px solid var(--latão);
       border-radius: 0;
       background: var(--papel);
-      box-shadow: 0 7px 22px rgba(21, 44, 47, 0.06);
+      box-shadow: 0 7px 22px rgba(63, 74, 60, 0.06);
     }
 
     .reserva-item .reserva-nome {
@@ -864,7 +872,7 @@
     .chat-header {
       padding: 20px 24px;
       background: var(--marinho);
-      color: #f7eacf;
+      color: var(--color-beige);
       font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -873,7 +881,7 @@
     .chat-messages {
       height: 390px;
       padding: 25px;
-      background: #fbfaf7;
+      background: var(--color-white-warm);
     }
 
     .chat-msg {
@@ -889,7 +897,7 @@
 
     .chat-msg.hotel,
     .chat-typing {
-      background: #e9eeeb;
+      background: var(--color-beige);
       color: var(--texto);
       border-bottom-left-radius: 0;
     }
@@ -901,7 +909,7 @@
     }
 
     .chat-input-area button {
-      background: var(--latão);
+      background: var(--color-moss-dark);
     }
 
     .localizacao-box {
@@ -931,8 +939,8 @@
     footer {
       margin-top: 110px;
       padding: 38px 20px;
-      background: var(--marinho-profundo);
-      color: rgba(255, 255, 255, 0.62);
+      background: var(--color-moss-dark);
+      color: rgba(250, 248, 243, 0.72);
       letter-spacing: 0.05em;
     }
 
@@ -980,13 +988,13 @@
 
     /* ---------- Direcao editorial do hotel ---------- */
     :root {
-      --ink: #1b1b1a;
-      --ink-soft: #68645f;
-      --paper: #f7f5f1;
-      --surface: #fffefa;
-      --night: #20201e;
-      --champagne: #a88b5a;
-      --line: rgba(27, 27, 26, 0.12);
+      --ink: #252721;
+      --ink-soft: #655E54;
+      --paper: #F3EBDD;
+      --surface: #FAF8F3;
+      --night: #3F4A3C;
+      --champagne: #C8B79E;
+      --line: rgba(63, 74, 60, 0.15);
       --container: 1280px;
     }
 
@@ -1004,7 +1012,7 @@
       align-items: stretch;
       justify-content: space-between;
       padding: 28px clamp(20px, 5vw, 72px) 76px;
-      background-image: linear-gradient(90deg, rgba(13, 18, 17, .72), rgba(13, 18, 17, .18)), url('../imagens/vista externa.jpg');
+      background-image: linear-gradient(90deg, rgba(37, 39, 33, .72), rgba(63, 74, 60, .18)), url('../imagens/vista externa.jpg');
       background-position: center;
       border-bottom: 0;
       box-shadow: none;
@@ -1023,7 +1031,7 @@
     }
 
     .brand {
-      color: #fff;
+      color: var(--color-white-warm);
       text-decoration: none;
       line-height: .9;
     }
@@ -1047,7 +1055,7 @@
 
     .main-nav { display: flex; gap: clamp(14px, 2.5vw, 34px); }
     .main-nav a {
-      color: rgba(255,255,255,.86);
+      color: rgba(250,248,243,.86);
       font-size: .7rem;
       font-weight: 600;
       letter-spacing: .1em;
@@ -1055,7 +1063,7 @@
       text-transform: uppercase;
       transition: color .25s ease;
     }
-    .main-nav a:hover, .main-nav a:focus-visible { color: #fff; }
+    .main-nav a:hover, .main-nav a:focus-visible { color: var(--color-white-warm); }
 
     .hero-copy {
       position: relative;
@@ -1087,7 +1095,7 @@
     header p {
       max-width: 430px;
       margin: 0;
-      color: rgba(255,255,255,.8);
+      color: rgba(250,248,243,.8);
       font-size: clamp(.85rem, 1.5vw, 1.05rem);
       font-style: normal;
       letter-spacing: .02em;
@@ -1100,7 +1108,7 @@
       min-height: 48px;
       margin-top: 32px;
       padding: 0 24px;
-      background: #fff;
+      background: var(--color-white-warm);
       color: var(--ink);
       font-size: .7rem;
       font-weight: 700;
@@ -1109,13 +1117,13 @@
       text-transform: uppercase;
       transition: background .25s ease, color .25s ease, transform .25s ease;
     }
-    .hero-link:hover, .hero-link:focus-visible { background: var(--champagne); color: #fff; transform: translateY(-2px); }
+    .hero-link:hover, .hero-link:focus-visible { background: var(--color-moss); color: var(--color-white-warm); transform: translateY(-2px); }
 
     header::after {
       content: 'ESTADIA  •  CONFORTO  •  HOSPITALIDADE';
       right: clamp(20px, 5vw, 72px);
       bottom: 30px;
-      color: rgba(255,255,255,.65);
+      color: rgba(250,248,243,.65);
       font-size: .6rem;
       letter-spacing: .2em;
     }
@@ -1147,15 +1155,15 @@
       border: 1px solid var(--line);
       border-radius: 0;
       background: var(--surface);
-      box-shadow: 0 16px 46px rgba(25, 24, 21, .08);
+      box-shadow: 0 16px 46px rgba(63, 74, 60, .08);
     }
     .reserva-form { padding: 30px; border-top: 3px solid var(--champagne); }
     .reserva-form form { gap: 20px; }
     .reserva-form label { color: var(--ink-soft); font-size: .63rem; letter-spacing: .15em; }
-    .reserva-form input, .reserva-form select { border-color: var(--line); border-radius: 0; background: #fff; color: var(--ink); }
-    .reserva-form input:focus, .reserva-form select:focus, .chat-input-area input:focus { border-color: var(--champagne); box-shadow: 0 0 0 3px rgba(168,139,90,.15); }
-    .reserva-form button { border-radius: 0; background: var(--night); transition: background .25s ease, transform .25s ease; }
-    .reserva-form button:hover { background: var(--champagne); transform: translateY(-2px); }
+    .reserva-form input, .reserva-form select { border-color: var(--line); border-radius: 0; background: var(--color-white-warm); color: var(--ink); }
+    .reserva-form input:focus, .reserva-form select:focus, .chat-input-area input:focus { border-color: var(--color-moss); box-shadow: 0 0 0 3px rgba(102,112,93,.15); }
+    .reserva-form button { border-radius: 0; background: var(--color-moss-dark); transition: background .25s ease, transform .25s ease; }
+    .reserva-form button:hover { background: var(--color-moss); transform: translateY(-2px); }
 
     .quartos-grid {
       display: flex;
@@ -1174,7 +1182,7 @@
       text-align: left;
       transition: transform .3s ease, box-shadow .3s ease;
     }
-    .quarto-card:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(25,24,21,.14); }
+    .quarto-card:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(63,74,60,.14); }
     .quarto-card img {
       grid-column: 2;
       grid-row: 1;
@@ -1212,35 +1220,35 @@
     .servicos-grid { gap: 0; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .servico-card { padding: 30px 18px; border-width: 0 1px 0 0; box-shadow: none; transition: background .25s ease; }
     .servico-card:last-child { border-right: 0; }
-    .servico-card:hover { transform: none; background: #fff; border-color: var(--line); }
+    .servico-card:hover { transform: none; background: var(--color-white-warm); border-color: var(--line); }
     .servico-card .emoji { display: grid; place-items: center; width: 34px; height: 34px; margin: 0 auto 20px; border: 1px solid var(--champagne); color: var(--champagne); font-size: .65rem; font-weight: 700; }
     .servico-card h4 { color: var(--ink); font-size: .68rem; letter-spacing: .1em; }
 
     .reservas-lista { max-width: none; }
-    .reserva-item { border-left: 2px solid var(--champagne); border-radius: 0; background: var(--surface); box-shadow: 0 10px 28px rgba(25,24,21,.06); }
+    .reserva-item { border-left: 2px solid var(--champagne); border-radius: 0; background: var(--surface); box-shadow: 0 10px 28px rgba(63,74,60,.06); }
     .reserva-item .reserva-nome { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; }
     .reservas-vazio { border: 1px dashed var(--line); color: var(--ink-soft); padding: 36px; }
 
-    #chat { background: #eeece7; max-width: none; }
+    #chat { background: var(--color-cream); max-width: none; }
     #chat > * { max-width: 860px; margin-left: auto; margin-right: auto; }
     .chat-container { max-width: 860px; }
-    .chat-header { background: var(--night); padding: 22px 26px; color: #fff; font-size: .72rem; letter-spacing: .14em; }
-    .chat-messages { height: 400px; background: #fbfaf7; }
+    .chat-header { background: var(--color-moss-dark); padding: 22px 26px; color: var(--color-white-warm); font-size: .72rem; letter-spacing: .14em; }
+    .chat-messages { height: 400px; background: var(--color-white-warm); }
     .chat-msg { border-radius: 0; }
-    .chat-msg.hospede { background: var(--night); border-bottom-right-radius: 0; }
-    .chat-msg.hotel, .chat-typing { background: #ebe8e1; border-bottom-left-radius: 0; }
+    .chat-msg.hospede { background: var(--color-moss-dark); color: var(--color-white-warm); border-bottom-right-radius: 0; }
+    .chat-msg.hotel, .chat-typing { background: var(--color-beige); color: var(--color-text); border-bottom-left-radius: 0; }
     .chat-input-area { background: var(--surface); }
     .chat-input-area input { border-radius: 0; }
-    .chat-input-area button { border-radius: 0; background: var(--champagne); }
+    .chat-input-area button { border-radius: 0; background: var(--color-moss-dark); }
 
     .localizacao-box { display: grid; grid-template-columns: .8fr 1.2fr; gap: 42px; max-width: none; padding: 0; text-align: left; overflow: hidden; }
     .localizacao-box .endereco { align-self: center; margin: 0; padding: 34px; color: var(--ink-soft); }
     .localizacao-box .endereco strong { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; }
-    .map-link { display: inline-block; margin-top: 24px; color: var(--ink); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--champagne); padding-bottom: 5px; }
-    .map-link:hover, .map-link:focus-visible { color: var(--champagne); }
+    .map-link { display: inline-block; margin-top: 24px; color: var(--color-moss-dark); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--color-sand); padding-bottom: 5px; }
+    .map-link:hover, .map-link:focus-visible { color: var(--color-moss); }
     .localizacao-box iframe { height: 370px; border-radius: 0; filter: grayscale(.25); }
 
-    footer { margin-top: 0; padding: 55px 20px; background: var(--night); color: rgba(255,255,255,.66); font-size: .72rem; letter-spacing: .09em; }
+    footer { margin-top: 0; padding: 55px 20px; background: var(--color-moss-dark); color: rgba(250,248,243,.72); font-size: .72rem; letter-spacing: .09em; }
 
     @media (max-width: 760px) {
       header { min-height: 78vh; padding: 22px 20px 58px; }
