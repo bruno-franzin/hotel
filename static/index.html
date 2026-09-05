@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <title>Hotel Travesseiro Nervoso</title>
+
+  <!-- ============================================
+       ESTILOS CSS DO SITE
+       Tema hotel, visual leve e bem-humorado
+       ============================================ -->
+  <style>
+    /* ---------- Reset e base ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    body {
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      /* Imagem de fundo com posição centralizada e sem repetição */
+      background-image: url('../imagens/vista externa.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #3a3a3a;
+      line-height: 1.6;
+    }
+
+    /* Camada de transparência sobre o fundo,
+       mantendo a leitura confortável e o visual do site intacto */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(253, 246, 236, 0.82);
+      z-index: -1;
+    }
+
+    /* ---------- Cabeçalho ---------- */
+    header {
+      /* Céu noturno: gradiente escuro sugere a noite de sono tranquilo */
+      background: linear-gradient(135deg, #16243f 0%, #2c3e6b 55%, #4a6fa5 100%);
+      color: #fff;
+      text-align: center;
+      padding: 56px 20px 46px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid #f0a500;
+    }
+
+    /* Estrelas piscando no céu do cabeçalho */
+    .estrela {
+      position: absolute;
+      color: #ffe9a8;
+      animation: brilhar 2.4s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .estrela-1 { top: 20px; left: 12%;  font-size: 1.1rem; animation-delay: 0s; }
+    .estrela-2 { top: 44px; right: 16%; font-size: 0.8rem; animation-delay: 0.8s; }
+    .estrela-3 { bottom: 22px; left: 22%; font-size: 1.3rem; animation-delay: 1.5s; }
+    .estrela-4 { top: 60px; left: 28%;  font-size: 0.7rem; animation-delay: 0.4s; }
+
+    /* Animação de brilho das estrelas */
+    @keyframes brilhar {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.35; transform: scale(0.75); }
+    }
+
+    /* Lua aconchegante no canto superior direito */
+    .lua {
+      position: absolute;
+      top: 16px;
+      right: 10%;
+      font-size: 2.3rem;
+      filter: drop-shadow(0 0 10px rgba(255, 233, 168, 0.9));
+      z-index: 1;
+    }
+
+    /* "Zzz" flutuando levemente (referência ao soninho) */
+    .zzz {
+      position: absolute;
+      font-weight: 700;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: rgba(255, 255, 255, 0.28);
+      animation: flutuar 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .zzz-1 { right: 24%; bottom: 34px; font-size: 0.9rem; }
+    .zzz-2 { right: 15%; bottom: 22px; font-size: 1.35rem; animation-delay: 0.6s; }
+    .zzz-3 { right: 8%;  bottom: 8px;  font-size: 1.8rem; animation-delay: 1.2s; }
+
+    /* Animação de flutuação dos "Zzz" */
+    @keyframes flutuar {
+      0%, 100% { transform: translateY(0); opacity: 0.85; }
+      50%      { transform: translateY(-10px); opacity: 0.35; }
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.7rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.92;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ---------- Seções gerais ---------- */
+    section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      text-align: center;
+      font-size: 1.8rem;
+      color: #2c3e6b;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #f0a500;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ---------- Quartos ---------- */
+    .quartos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .quarto-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+      transition: transform 0.2s;
+    }
+
+    .quarto-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .quarto-card .emoji {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+    }
+
+    .quarto-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .quarto-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      color: #2c3e6b;
+      margin-bottom: 8px;
+    }
+
+    .quarto-card .preco {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #f0a500;
+    }
+
+    .quarto-card .preco span {
+      font-size: 0.85rem;
+      font-weight: normal;
+      color: #888;
+    }
+
+    /* ---------- Serviços ---------- */
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .servico-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s;
+    }
+
+    .servico-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .servico-card .emoji {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .servico-card h4 {
+      color: #2c3e6b;
+      font-size: 1rem;
+    }
+
+    /* ---------- Formulário de Reserva ---------- */
+    .reserva-form {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px;
+      max-width: 1080px;
+      margin: 0 auto;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    }
+
+    .reserva-form form {
+      display: grid;
+      grid-template-columns: 1.35fr 1.25fr 1fr 1fr auto;
+      align-items: end;
+      gap: 14px;
+    }
+
+    .campo-reserva {
+      min-width: 0;
+    }
+
+    .reserva-form label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+      color: #2c3e6b;
+      font-size: 0.92rem;
+    }
+
+    .reserva-form input,
+    .reserva-form select {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 0;
+      border: 1.5px solid #d0d0d0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: #fafafa;
+      transition: border 0.2s;
+    }
+
+    .reserva-form input:focus,
+    .reserva-form select:focus {
+      outline: none;
+      border-color: #4a6fa5;
+    }
+
+    .reserva-form button {
+      width: auto;
+      min-width: 120px;
+      padding: 12px;
+      background: linear-gradient(135deg, #2c3e6b, #4a6fa5);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .reserva-form .reserva-msg {
+      grid-column: 1 / -1;
+    }
+
+    .reserva-form button:hover {
+      opacity: 0.9;
+    }
+
+    .reserva-msg {
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 600;
+      min-height: 24px;
+    }
+
+    .reserva-msg.sucesso {
+      color: #27ae60;
+    }
+
+    .reserva-msg.erro {
+      color: #e74c3c;
+    }
+
+    /* ---------- Reservas Confirmadas ---------- */
+    .reservas-lista {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .reserva-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .reserva-item .reserva-nome {
+      font-weight: 700;
+      color: #2c3e6b;
+    }
+
+    .reserva-item .reserva-detalhes {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .reservas-vazio {
+      text-align: center;
+      color: #999;
+      font-style: italic;
+      padding: 20px;
+    }
+
+    /* ---------- Chat ---------- */
+    .chat-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #2c3e6b, #4a6fa5);
+      color: #fff;
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .chat-messages {
+      height: 380px;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chat-msg {
+      max-width: 80%;
+      padding: 10px 16px;
+      border-radius: 14px;
+      font-size: 0.93rem;
+      line-height: 1.45;
+      word-wrap: break-word;
+    }
+
+    /* Mensagem do hóspede: à direita, fundo azul */
+    .chat-msg.hospede {
+      align-self: flex-end;
+      background: #4a6fa5;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    /* Mensagem do hotel: à esquerda, fundo cinza claro */
+    .chat-msg.hotel {
+      align-self: flex-start;
+      background: #eee;
+      color: #333;
+      border-bottom-left-radius: 4px;
+    }
+
+    /* Tópicos dentro das respostas do hotel (sem Markdown) */
+    .chat-topico {
+      margin-top: 6px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    /* Bolinha do tópico */
+    .chat-topico::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #f0a500;
+      font-weight: bold;
+    }
+
+    /* Indicador "digitando..." */
+    .chat-typing {
+      align-self: flex-start;
+      padding: 10px 16px;
+      background: #eee;
+      border-radius: 14px;
+      border-bottom-left-radius: 4px;
+      font-size: 0.88rem;
+      color: #888;
+      display: none;
+    }
+
+    .chat-typing span {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .chat-input-area {
+      display: flex;
+      border-top: 1px solid #e0e0e0;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid #d0d0d0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: #fafafa;
+    }
+
+    .chat-input-area input:focus {
+      outline: none;
+      border-color: #4a6fa5;
+    }
+
+    .chat-input-area button {
+      padding: 10px 22px;
+      background: #f0a500;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .chat-input-area button:hover {
+      opacity: 0.85;
+    }
+
+    /* ---------- Localização / Mapa ---------- */
+    .localizacao-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+      text-align: center;
+    }
+
+    .localizacao-box .endereco {
+      font-size: 1.05rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .localizacao-box .endereco strong {
+      color: #2c3e6b;
+    }
+
+    .localizacao-box iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* ---------- Rodapé ---------- */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      color: #999;
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+
+    /* ---------- Responsivo ---------- */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      /* Em telas pequenas, reduz a decoração do céu noturno */
+      .estrela-4 { display: none; }
+
+      .lua {
+        font-size: 1.8rem;
+        right: 6%;
+      }
+
+      .zzz { display: none; }
+
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .chat-messages {
+        height: 300px;
+      }
+
+      .reserva-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .reserva-form {
+        padding: 24px 20px;
+      }
+
+      .reserva-form form {
+        grid-template-columns: 1fr;
+      }
+
+      .reserva-form button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       CABEÇALHO
+       ============================================ -->
+  <header>
+    <!-- Decoração do céu noturno: estrelas piscando -->
+    <span class="estrela estrela-1">✦</span>
+    <span class="estrela estrela-2">✦</span>
+    <span class="estrela estrela-3">✦</span>
+    <span class="estrela estrela-4">✦</span>
+
+    <!-- Lua e "Zzz" reforçando o tema do sono -->
+    <span class="lua">🌙</span>
+    <span class="zzz zzz-1">Z</span>
+    <span class="zzz zzz-2">Z</span>
+    <span class="zzz zzz-3">Z</span>
+
+    <h1>Hotel Travesseiro Nervoso</h1>
+    <p>Aqui, até a insônia dorme</p>
+  </header>
+
+  <!-- ============================================
+       FAÇA SUA RESERVA
+       ============================================ -->
+  <section id="reserva">
+    <h2 class="section-title">Faça Sua Reserva</h2>
+    <div class="reserva-form">
+      <form id="formReserva">
+        <div class="campo-reserva">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome completo" required />
+        </div>
+
+        <div class="campo-reserva">
+          <label for="quarto">Quarto</label>
+          <select id="quarto" required>
+            <option value="">Selecione o quarto</option>
+            <option value="Standard">Standard — R$ 500</option>
+            <option value="Deluxe">Deluxe — R$ 700</option>
+            <option value="Suíte Presidencial">Suíte Presidencial — R$ 1.000</option>
+          </select>
+        </div>
+
+        <div class="campo-reserva">
+          <label for="checkin">Check-in</label>
+          <input type="date" id="checkin" required />
+        </div>
+
+        <div class="campo-reserva">
+          <label for="checkout">Check-out</label>
+          <input type="date" id="checkout" required />
+        </div>
+
+        <button type="submit">Reservar</button>
+      </form>
+      <div id="reservaMsg" class="reserva-msg"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       QUARTOS
+       ============================================ -->
+  <section id="quartos">
+    <h2 class="section-title">Nossos Quartos</h2>
+    <div class="quartos-grid">
+
+      <div class="quarto-card">
+        <img src="/imagens/quarto standart.jpg" alt="Quarto Standard">
+        <h3>Standard</h3>
+        <p class="preco">R$ 500 <span>/ noite</span></p>
+      </div>
+
+      <div class="quarto-card">
+        <img src="/imagens/quarto deluxe.jpg" alt="Quarto Deluxe">
+        <h3>Deluxe</h3>
+        <p class="preco">R$ 700 <span>/ noite</span></p>
+      </div>
+
+      <div class="quarto-card">
+        <img src="/imagens/quarto suite presidencial.jpg" alt="Suíte Presidencial">
+        <h3>Suíte Presidencial</h3>
+        <p class="preco">R$ 1.000 <span>/ noite</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       CHAT COM ATENDENTE VIRTUAL
+       ============================================ -->
+  <section id="chat">
+    <h2 class="section-title">Fale com o Atendente</h2>
+    <div class="chat-container">
+
+      <div class="chat-header">
+        🛎️ Atendente Virtual — Hotel Travesseiro Nervoso
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <!-- Mensagem de boas-vindas do hotel -->
+        <div class="chat-msg hotel">
+          Olá! Bem-vindo ao Hotel Travesseiro Nervoso. Como posso te ajudar hoje? 😴
+        </div>
+        <!-- Indicador digitando -->
+        <div class="chat-typing" id="chatTyping">
+          <span>digitando...</span>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Digite sua mensagem..."
+          autocomplete="off"
+        />
+        <button id="chatBtn">Enviar</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       RESERVAS CONFIRMADAS
+       ============================================ -->
+  <section id="reservasConfirmadas">
+    <h2 class="section-title">Reservas Confirmadas</h2>
+    <div id="reservasLista" class="reservas-lista">
+      <p class="reservas-vazio">Nenhuma reserva encontrada.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SERVIÇOS
+       ============================================ -->
+  <section id="servicos">
+    <h2 class="section-title">Serviços</h2>
+    <div class="servicos-grid">
+
+      <div class="servico-card">
+        <div class="emoji">💪</div>
+        <h4>Academia</h4>
+      </div>
+
+      <div class="servico-card">
+        <div class="emoji">☕</div>
+        <h4>Café da Manhã</h4>
+      </div>
+
+      <div class="servico-card">
+        <div class="emoji">👕</div>
+        <h4>Lavanderia</h4>
+      </div>
+
+      <div class="servico-card">
+        <div class="emoji">🍽️</div>
+        <h4>Restaurante</h4>
+      </div>
+
+      <div class="servico-card">
+        <div class="emoji">🏊</div>
+        <h4>Piscina</h4>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       LOCALIZAÇÃO / MAPA
+       ============================================ -->
+  <section id="localizacao">
+    <h2 class="section-title">Onde Estamos</h2>
+    <div class="localizacao-box">
+      <div class="endereco">
+        <strong>Av. Brasil, 2801</strong><br />
+        Parque Res. Nardini — Americana / SP<br />
+        CEP: 13468-390
+      </div>
+      <iframe
+        src="https://maps.google.com/maps?q=Av.+Brasil,+2801+-+Parque+Res.+Nardini,+Americana+-+SP,+13468-390&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localização do Hotel Travesseiro Nervoso">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ============================================
+       RODAPÉ
+       ============================================ -->
+  <footer>
+    Hotel Travesseiro Nervoso &copy; 2026 — Aqui, até a insônia dorme.
+  </footer>
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <script>
+    // =============================================
+    // CHAT — Enviar mensagens ao atendente virtual
+    // =============================================
+
+    // Referências dos elementos do chat
+    const chatInput  = document.getElementById('chatInput');
+    const chatBtn    = document.getElementById('chatBtn');
+    const chatMsgs   = document.getElementById('chatMessages');
+    const chatTyping = document.getElementById('chatTyping');
+
+    /**
+     * Limpa a formatação Markdown do texto do agente.
+     * Remove #, *, **, _, __, ` e > e organiza tópicos (linhas com - ou *)
+     * separadas por quebra de linha, para exibição simples no chat.
+     * @param {string} texto - Resposta crua vinda do agente.
+     * @returns {string} Texto limpo, sem caracteres Markdown.
+     */
+    function limparMarkdown(texto) {
+      // Quebra em linhas para tratar cada tópico
+      const linhas = texto.split('\n');
+
+      const linhasLimpos = linhas.map(function (linha) {
+        let limpa = linha.trim();
+
+        // Remove marcadores de título (#, ##, ###...)
+        limpa = limpa.replace(/^#{1,6}\s+/, '');
+
+        // Remove citações (>) e marcadores de lista (*, -, +)
+        limpa = limpa.replace(/^>\s*/, '');
+        limpa = limpa.replace(/^[-*+]\s+/, '');
+
+        // Remove negrito/itálico/código inline (** , * , __ , _ , `)
+        limpa = limpa.replace(/\*\*(.*?)\*\*/g, '$1');
+        limpa = limpa.replace(/__(.*?)__/g, '$1');
+        limpa = limpa.replace(/(^|[^*])\*([^*]+)\*/g, '$1$2');
+        limpa = limpa.replace(/`([^`]*)`/g, '$1');
+
+        // Remove links no formato [texto](url) deixando só o texto
+        limpa = limpa.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+
+        return limpa;
+      });
+
+      // Junta novamente sem linhas totalmente vazias em excesso
+      return linhasLimpos.filter(Boolean).join('\n');
+    }
+
+    /**
+     * Adiciona uma mensagem visual na tela do chat.
+     * @param {string} texto - Conteúdo da mensagem.
+     * @param {string} tipo  - "hospede" (direita) ou "hotel" (esquerda).
+     */
+    function adicionarMensagem(texto, tipo) {
+      const div = document.createElement('div');
+      div.classList.add('chat-msg', tipo);
+
+      // Para mensagens do hotel, remove o Markdown e exibe em tópicos
+      if (tipo === 'hotel') {
+        const linhas = limparMarkdown(texto).split('\n');
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('chat-texto');
+
+        linhas.forEach(function (linha, indice) {
+          // Se for a primeira linha, exibe normalmente
+          if (indice === 0) {
+            const p = document.createElement('div');
+            p.textContent = linha;
+            wrapper.appendChild(p);
+            return;
+          }
+          // Demais linhas viram tópicos com marcador
+          const topico = document.createElement('div');
+          topico.classList.add('chat-topico');
+          topico.textContent = linha;
+          wrapper.appendChild(topico);
+        });
+
+        div.appendChild(wrapper);
+      } else {
+        // Mensagem do hóspede continua como texto simples
+        div.textContent = texto;
+      }
+
+      // Insere antes do indicador "digitando..."
+      chatMsgs.insertBefore(div, chatTyping);
+      // Rola para baixo automaticamente
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    /**
+     * Mostra ou esconde o indicador "digitando..."
+     */
+    function mostrarDigitando(mostrar) {
+      chatTyping.style.display = mostrar ? 'block' : 'none';
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    /**
+     * Envia a pergunta do hóspede para o backend (POST /perguntar)
+     * e exibe a resposta do hotel.
+     */
+    async function enviarMensagem() {
+      const texto = chatInput.value.trim();
+      if (!texto) return;
+
+      // Mostra a mensagem do hóspede à direita
+      adicionarMensagem(texto, 'hospede');
+      chatInput.value = '';
+      chatInput.focus();
+
+      // Mostra indicador "digitando..."
+      mostrarDigitando(true);
+
+      try {
+        const resposta = await fetch('/perguntar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pergunta: texto })
+        });
+
+        const dados = await resposta.json();
+
+        // Esconde indicador
+        mostrarDigitando(false);
+
+        // Exibe a resposta do hotel à esquerda
+        adicionarMensagem(dados.mensagem || 'Desculpe, não consegui processar sua mensagem.', 'hotel');
+      } catch (erro) {
+        mostrarDigitando(false);
+        adicionarMensagem('Erro ao conectar com o atendente. Tente novamente.', 'hotel');
+      }
+    }
+
+    // Clique no botão "Enviar"
+    chatBtn.addEventListener('click', enviarMensagem);
+
+    // Pressionar Enter no campo de texto
+    chatInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        enviarMensagem();
+      }
+    });
+
+    // =============================================
+    // RESERVA — Enviar formulário
+    // =============================================
+
+    // Referências dos elementos da reserva
+    const formReserva = document.getElementById('formReserva');
+    const reservaMsg  = document.getElementById('reservaMsg');
+
+    /**
+     * Envia os dados da reserva para o backend (POST /reservas)
+     * e exibe a mensagem de retorno.
+     */
+    formReserva.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const dados = {
+        nome:     document.getElementById('nome').value.trim(),
+        quarto:   document.getElementById('quarto').value,
+        checkin:  document.getElementById('checkin').value,
+        checkout: document.getElementById('checkout').value
+      };
+
+      // Validação básica
+      if (!dados.nome || !dados.quarto || !dados.checkin || !dados.checkout) {
+        reservaMsg.textContent = 'Preencha todos os campos.';
+        reservaMsg.className = 'reserva-msg erro';
+        return;
+      }
+
+      try {
+        const resposta = await fetch('/reservas', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados)
+        });
+
+        const json = await resposta.json();
+
+        // Exibe a mensagem que voltar do servidor
+        reservaMsg.textContent = json.mensagem || 'Reserva enviada!';
+        reservaMsg.className = 'reserva-msg sucesso';
+
+        // Limpa o formulário
+        formReserva.reset();
+
+        // Atualiza a lista de reservas confirmadas
+        carregarReservas();
+      } catch (erro) {
+        reservaMsg.textContent = 'Erro ao enviar reserva. Tente novamente.';
+        reservaMsg.className = 'reserva-msg erro';
+      }
+    });
+
+    // =============================================
+    // RESERVAS CONFIRMADAS — Carregar lista
+    // =============================================
+
+    const reservasLista = document.getElementById('reservasLista');
+
+    /**
+     * Busca as reservas no backend (GET /reservas)
+     * e renderiza na seção "Reservas Confirmadas".
+     */
+    async function carregarReservas() {
+      try {
+        const resposta = await fetch('/reservas');
+        const lista = await resposta.json();
+
+        // Limpa a lista atual
+        reservasLista.innerHTML = '';
+
+        // Se não houver reservas, mostra mensagem
+        if (!lista || lista.length === 0) {
+          reservasLista.innerHTML = '<p class="reservas-vazio">Nenhuma reserva encontrada.</p>';
+          return;
+        }
+
+        // Renderiza cada reserva
+        lista.forEach(function (reserva) {
+          const item = document.createElement('div');
+          item.classList.add('reserva-item');
+
+          item.innerHTML =
+            '<span class="reserva-nome">' + (reserva.nome || 'Hóspede') + '</span>' +
+            '<span class="reserva-detalhes">' +
+              (reserva.quarto || '') +
+              ' — Check-in: ' + (reserva.checkin || '—') +
+              ' | Check-out: ' + (reserva.checkout || '—') +
+            '</span>';
+
+          reservasLista.appendChild(item);
+        });
+      } catch (erro) {
+        reservasLista.innerHTML = '<p class="reservas-vazio">Erro ao carregar reservas.</p>';
+      }
+    }
+
+    // Carrega as reservas ao abrir a página
+    carregarReservas();
+  </script>
+
+</body>
+</html>
