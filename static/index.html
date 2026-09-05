@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <title>Hotel Travesseiro Nervoso</title>
 
   <!-- ============================================
@@ -215,7 +215,7 @@
     .servico-card {
       background: #fff;
       border-radius: 12px;
-      padding: 24px 16px;
+      overflow: hidden;
       text-align: center;
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
       transition: transform 0.2s;
@@ -225,9 +225,24 @@
       transform: translateY(-3px);
     }
 
-    .servico-card .emoji {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    .servico-card img {
+      display: block;
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .servico-card .servico-conteudo {
+      padding: 18px 16px 20px;
+    }
+
+    .servico-card .numero {
+      display: block;
+      margin-bottom: 6px;
+      color: #f0a500;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
     }
 
     .servico-card h4 {
@@ -564,6 +579,645 @@
         width: 100%;
       }
     }
+
+    /* ---------- Refinamento visual premium ----------
+       Mantém a estrutura e os seletores usados pelo JavaScript,
+       mas transforma a apresentação em uma experiência de hotel boutique. */
+    :root {
+      --marinho: #102d35;
+      --marinho-profundo: #092129;
+      --verde: #1e4a4b;
+      --latão: #b89454;
+      --latão-claro: #d5b779;
+      --marfim: #f6f3ed;
+      --papel: #fffdfa;
+      --texto: #26373a;
+      --muted: #6e7978;
+      --linha: rgba(16, 45, 53, 0.13);
+      --sombra: 0 18px 50px rgba(21, 44, 47, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--marfim);
+      background-image: none;
+      color: var(--texto);
+      letter-spacing: 0.01em;
+    }
+
+    body::before {
+      background: linear-gradient(180deg, rgba(246, 243, 237, 0.94), rgba(246, 243, 237, 0.98));
+      z-index: -1;
+    }
+
+    header {
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 86px 24px 76px;
+      background-image: linear-gradient(105deg, rgba(7, 31, 38, 0.96), rgba(16, 55, 59, 0.75)), url('../imagens/vista externa.jpg');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(213, 183, 121, 0.75);
+      box-shadow: 0 12px 30px rgba(9, 33, 41, 0.13);
+    }
+
+    header::after {
+      content: 'ESTADIA • CONFORTO • HOSPITALIDADE';
+      position: absolute;
+      bottom: 27px;
+      color: var(--latão-claro);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      z-index: 2;
+    }
+
+    header h1 {
+      max-width: 780px;
+      font-size: clamp(2.7rem, 6vw, 5.3rem);
+      line-height: 1.05;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      text-shadow: 0 5px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    header p {
+      margin-top: 12px;
+      color: #f5e9cf;
+      font-size: 1.02rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    .estrela, .lua, .zzz {
+      opacity: 0.6;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: 92px auto;
+      padding: 0 28px;
+    }
+
+    .section-title {
+      margin-bottom: 34px;
+      color: var(--marinho);
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title::before {
+      content: '✦';
+      display: block;
+      margin-bottom: 9px;
+      color: var(--latão);
+      font-family: Georgia, serif;
+      font-size: 0.9rem;
+    }
+
+    .section-title::after {
+      width: 42px;
+      height: 1px;
+      margin-top: 14px;
+      background: var(--latão);
+      border-radius: 0;
+    }
+
+    .quartos-grid {
+      gap: 28px;
+    }
+
+    .quarto-card,
+    .servico-card,
+    .reserva-form,
+    .chat-container,
+    .localizacao-box {
+      background: var(--papel);
+      border: 1px solid var(--linha);
+      border-radius: 2px;
+      box-shadow: var(--sombra);
+    }
+
+    .quarto-card {
+      padding: 14px 14px 25px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quarto-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 24px 56px rgba(21, 44, 47, 0.16);
+    }
+
+    .quarto-card img {
+      height: 225px;
+      margin-bottom: 22px;
+      border-radius: 0;
+      filter: saturate(0.86);
+      transition: filter 0.3s ease;
+    }
+
+    .quarto-card:hover img {
+      filter: saturate(1);
+    }
+
+    .quarto-card h3 {
+      padding: 0 10px;
+      color: var(--marinho);
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .quarto-card .preco {
+      padding: 0 10px;
+      color: var(--verde);
+      font-size: 1.35rem;
+    }
+
+    .quarto-card .preco span {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reserva-form {
+      max-width: none;
+      padding: 34px;
+      border-top: 3px solid var(--latão);
+    }
+
+    .reserva-form form {
+      gap: 18px;
+    }
+
+    .reserva-form label {
+      margin-bottom: 8px;
+      color: var(--marinho);
+      font-size: 0.72rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .reserva-form input,
+    .reserva-form select,
+    .chat-input-area input {
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid #cbd2cf;
+      border-radius: 0;
+      background: #fff;
+      color: var(--texto);
+    }
+
+    .reserva-form input:focus,
+    .reserva-form select:focus,
+    .chat-input-area input:focus {
+      border-color: var(--latão);
+      box-shadow: 0 0 0 3px rgba(184, 148, 84, 0.13);
+    }
+
+    .reserva-form button,
+    .chat-input-area button {
+      min-height: 48px;
+      padding: 12px 24px;
+      border-radius: 0;
+      background: var(--marinho);
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .reserva-form button:hover,
+    .chat-input-area button:hover {
+      opacity: 1;
+      background: var(--latão);
+      transform: translateY(-2px);
+    }
+
+    .servicos-grid {
+      gap: 16px;
+    }
+
+    .servico-card {
+      padding: 27px 16px;
+      border-radius: 2px;
+      box-shadow: 0 8px 25px rgba(21, 44, 47, 0.06);
+    }
+
+    .servico-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(184, 148, 84, 0.55);
+    }
+
+    .servico-card .emoji {
+      filter: grayscale(0.25);
+      font-size: 2rem;
+    }
+
+    .servico-card h4 {
+      color: var(--marinho);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reservas-lista {
+      max-width: 820px;
+    }
+
+    .reserva-item {
+      margin-bottom: 10px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--latão);
+      border-radius: 0;
+      background: var(--papel);
+      box-shadow: 0 7px 22px rgba(21, 44, 47, 0.06);
+    }
+
+    .reserva-item .reserva-nome {
+      color: var(--marinho);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .reserva-item .reserva-detalhes {
+      color: var(--muted);
+    }
+
+    .chat-container {
+      max-width: 760px;
+      border-radius: 2px;
+    }
+
+    .chat-header {
+      padding: 20px 24px;
+      background: var(--marinho);
+      color: #f7eacf;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .chat-messages {
+      height: 390px;
+      padding: 25px;
+      background: #fbfaf7;
+    }
+
+    .chat-msg {
+      padding: 13px 17px;
+      border-radius: 2px;
+      font-size: 0.9rem;
+    }
+
+    .chat-msg.hospede {
+      background: var(--verde);
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-msg.hotel,
+    .chat-typing {
+      background: #e9eeeb;
+      color: var(--texto);
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-input-area {
+      padding: 16px;
+      border-top: 1px solid var(--linha);
+      background: var(--papel);
+    }
+
+    .chat-input-area button {
+      background: var(--latão);
+    }
+
+    .localizacao-box {
+      max-width: 900px;
+      padding: 34px;
+      text-align: left;
+    }
+
+    .localizacao-box .endereco {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .localizacao-box .endereco strong {
+      color: var(--marinho);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .localizacao-box iframe {
+      height: 370px;
+      border-radius: 0;
+      filter: saturate(0.75);
+    }
+
+    footer {
+      margin-top: 110px;
+      padding: 38px 20px;
+      background: var(--marinho-profundo);
+      color: rgba(255, 255, 255, 0.62);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        min-height: 330px;
+        padding: 74px 20px 64px;
+      }
+
+      header h1 {
+        font-size: 2.7rem;
+      }
+
+      header p {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      section {
+        margin: 64px auto;
+        padding: 0 18px;
+      }
+
+      .reserva-form,
+      .localizacao-box {
+        padding: 24px 18px;
+      }
+
+      .quarto-card img {
+        height: 205px;
+      }
+
+      .chat-messages {
+        padding: 18px;
+      }
+
+      .localizacao-box iframe {
+        height: 290px;
+      }
+
+      footer {
+        margin-top: 70px;
+      }
+    }
+
+    /* ---------- Direcao editorial do hotel ---------- */
+    :root {
+      --ink: #1b1b1a;
+      --ink-soft: #68645f;
+      --paper: #f7f5f1;
+      --surface: #fffefa;
+      --night: #20201e;
+      --champagne: #a88b5a;
+      --line: rgba(27, 27, 26, 0.12);
+      --container: 1280px;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Manrope', Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body::before { display: none; }
+
+    header {
+      min-height: 82vh;
+      align-items: stretch;
+      justify-content: space-between;
+      padding: 28px clamp(20px, 5vw, 72px) 76px;
+      background-image: linear-gradient(90deg, rgba(13, 18, 17, .72), rgba(13, 18, 17, .18)), url('../imagens/vista externa.jpg');
+      background-position: center;
+      border-bottom: 0;
+      box-shadow: none;
+      text-align: left;
+    }
+
+    .site-nav {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      width: min(100%, var(--container));
+      margin: 0 auto;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      line-height: .9;
+    }
+
+    .brand small {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--champagne);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .24em;
+    }
+
+    .brand strong {
+      display: block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .main-nav { display: flex; gap: clamp(14px, 2.5vw, 34px); }
+    .main-nav a {
+      color: rgba(255,255,255,.86);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+    .main-nav a:hover, .main-nav a:focus-visible { color: #fff; }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: min(100%, var(--container));
+      margin: auto;
+      padding-top: clamp(52px, 10vh, 120px);
+    }
+
+    .hero-kicker, .eyebrow {
+      color: var(--champagne);
+      font-size: .67rem;
+      font-weight: 700;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      max-width: 720px;
+      margin: 18px 0 12px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3.4rem, 8vw, 7.2rem);
+      font-weight: 500;
+      letter-spacing: -.045em;
+      line-height: .88;
+      text-shadow: none;
+    }
+
+    header p {
+      max-width: 430px;
+      margin: 0;
+      color: rgba(255,255,255,.8);
+      font-size: clamp(.85rem, 1.5vw, 1.05rem);
+      font-style: normal;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      margin-top: 32px;
+      padding: 0 24px;
+      background: #fff;
+      color: var(--ink);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .25s ease, color .25s ease, transform .25s ease;
+    }
+    .hero-link:hover, .hero-link:focus-visible { background: var(--champagne); color: #fff; transform: translateY(-2px); }
+
+    header::after {
+      content: 'ESTADIA  •  CONFORTO  •  HOSPITALIDADE';
+      right: clamp(20px, 5vw, 72px);
+      bottom: 30px;
+      color: rgba(255,255,255,.65);
+      font-size: .6rem;
+      letter-spacing: .2em;
+    }
+
+    .estrela, .lua, .zzz { display: none; }
+
+    section {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+      padding: 112px clamp(20px, 5vw, 56px);
+    }
+
+    .section-title {
+      margin-bottom: 42px;
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.5rem, 4vw, 4.1rem);
+      font-weight: 600;
+      letter-spacing: -.035em;
+      line-height: .95;
+      text-align: left;
+    }
+    .section-title::before { display: none; }
+    .section-title::after { width: 52px; height: 1px; margin: 17px 0 0; background: var(--champagne); }
+
+    #reserva { padding-top: 0; margin-top: -42px; position: relative; z-index: 4; }
+    #reserva .section-title { display: none; }
+    .reserva-form, .chat-container, .localizacao-box, .quarto-card, .servico-card {
+      border: 1px solid var(--line);
+      border-radius: 0;
+      background: var(--surface);
+      box-shadow: 0 16px 46px rgba(25, 24, 21, .08);
+    }
+    .reserva-form { padding: 30px; border-top: 3px solid var(--champagne); }
+    .reserva-form form { gap: 20px; }
+    .reserva-form label { color: var(--ink-soft); font-size: .63rem; letter-spacing: .15em; }
+    .reserva-form input, .reserva-form select { border-color: var(--line); border-radius: 0; background: #fff; color: var(--ink); }
+    .reserva-form input:focus, .reserva-form select:focus, .chat-input-area input:focus { border-color: var(--champagne); box-shadow: 0 0 0 3px rgba(168,139,90,.15); }
+    .reserva-form button { border-radius: 0; background: var(--night); transition: background .25s ease, transform .25s ease; }
+    .reserva-form button:hover { background: var(--champagne); transform: translateY(-2px); }
+
+    .quartos-grid { gap: 26px; }
+    .quarto-card { padding: 0 0 26px; overflow: hidden; text-align: left; transition: transform .3s ease, box-shadow .3s ease; }
+    .quarto-card:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(25,24,21,.14); }
+    .quarto-card img { height: clamp(240px, 28vw, 360px); margin-bottom: 22px; border-radius: 0; filter: saturate(.82); transition: transform .5s ease, filter .5s ease; }
+    .quarto-card:hover img { transform: scale(1.025); filter: saturate(1); }
+    .quarto-card h3 { padding: 0 24px; color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.85rem; font-weight: 600; }
+    .quarto-card .preco { padding: 0 24px; color: var(--ink); font-size: 1rem; font-weight: 700; }
+    .quarto-card .preco span { color: var(--ink-soft); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+
+    .servicos-grid { gap: 0; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .servico-card { padding: 30px 18px; border-width: 0 1px 0 0; box-shadow: none; transition: background .25s ease; }
+    .servico-card:last-child { border-right: 0; }
+    .servico-card:hover { transform: none; background: #fff; border-color: var(--line); }
+    .servico-card .emoji { display: grid; place-items: center; width: 34px; height: 34px; margin: 0 auto 20px; border: 1px solid var(--champagne); color: var(--champagne); font-size: .65rem; font-weight: 700; }
+    .servico-card h4 { color: var(--ink); font-size: .68rem; letter-spacing: .1em; }
+
+    .reservas-lista { max-width: none; }
+    .reserva-item { border-left: 2px solid var(--champagne); border-radius: 0; background: var(--surface); box-shadow: 0 10px 28px rgba(25,24,21,.06); }
+    .reserva-item .reserva-nome { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; }
+    .reservas-vazio { border: 1px dashed var(--line); color: var(--ink-soft); padding: 36px; }
+
+    #chat { background: #eeece7; max-width: none; }
+    #chat > * { max-width: 860px; margin-left: auto; margin-right: auto; }
+    #chat .section-title { max-width: var(--container); }
+    .chat-container { max-width: 860px; }
+    .chat-header { background: var(--night); padding: 22px 26px; color: #fff; font-size: .72rem; letter-spacing: .14em; }
+    .chat-messages { height: 400px; background: #fbfaf7; }
+    .chat-msg { border-radius: 0; }
+    .chat-msg.hospede { background: var(--night); border-bottom-right-radius: 0; }
+    .chat-msg.hotel, .chat-typing { background: #ebe8e1; border-bottom-left-radius: 0; }
+    .chat-input-area { background: var(--surface); }
+    .chat-input-area input { border-radius: 0; }
+    .chat-input-area button { border-radius: 0; background: var(--champagne); }
+
+    .localizacao-box { display: grid; grid-template-columns: .8fr 1.2fr; gap: 42px; max-width: none; padding: 0; text-align: left; overflow: hidden; }
+    .localizacao-box .endereco { align-self: center; margin: 0; padding: 34px; color: var(--ink-soft); }
+    .localizacao-box .endereco strong { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; }
+    .map-link { display: inline-block; margin-top: 24px; color: var(--ink); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--champagne); padding-bottom: 5px; }
+    .map-link:hover, .map-link:focus-visible { color: var(--champagne); }
+    .localizacao-box iframe { height: 370px; border-radius: 0; filter: grayscale(.25); }
+
+    footer { margin-top: 0; padding: 55px 20px; background: var(--night); color: rgba(255,255,255,.66); font-size: .72rem; letter-spacing: .09em; }
+
+    @media (max-width: 760px) {
+      header { min-height: 78vh; padding: 22px 20px 58px; }
+      .site-nav { align-items: flex-start; }
+      .main-nav { display: none; }
+      header h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
+      section { padding-top: 78px; padding-bottom: 78px; }
+      #reserva { margin-top: -28px; }
+      .reserva-form { padding: 22px 18px; }
+      .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+      .servico-card { border-bottom: 1px solid var(--line); }
+      .servico-card:nth-child(2n) { border-right: 0; }
+      .localizacao-box { grid-template-columns: 1fr; gap: 0; }
+      .localizacao-box iframe { height: 280px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
   </style>
 </head>
 <body>
@@ -584,8 +1238,26 @@
     <span class="zzz zzz-2">Z</span>
     <span class="zzz zzz-3">Z</span>
 
-    <h1>Hotel Travesseiro Nervoso</h1>
-    <p>Aqui, até a insônia dorme</p>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="#topo">
+        <small>HOTEL</small>
+        <strong>Travesseiro Nervoso</strong>
+      </a>
+      <div class="main-nav">
+        <a href="#quartos">Quartos</a>
+        <a href="#reserva">Reservas</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#chat">Atendimento</a>
+        <a href="#localizacao">Localização</a>
+      </div>
+    </nav>
+
+    <div class="hero-copy" id="topo">
+      <span class="hero-kicker">Uma pausa para chamar de sua</span>
+      <h1>Hotel Travesseiro Nervoso</h1>
+      <p>Aqui, até a insônia dorme</p>
+      <a class="hero-link" href="#quartos">Conheça nossos quartos</a>
+    </div>
   </header>
 
   <!-- ============================================
@@ -658,7 +1330,7 @@
        CHAT COM ATENDENTE VIRTUAL
        ============================================ -->
   <section id="chat">
-    <h2 class="section-title">Fale com o Atendente</h2>
+        <h2 class="section-title">Concierge Virtual</h2>
     <div class="chat-container">
 
       <div class="chat-header">
@@ -681,9 +1353,10 @@
           type="text"
           id="chatInput"
           placeholder="Digite sua mensagem..."
+          aria-label="Mensagem para o concierge virtual"
           autocomplete="off"
         />
-        <button id="chatBtn">Enviar</button>
+        <button id="chatBtn" type="button">Enviar</button>
       </div>
 
     </div>
@@ -703,32 +1376,47 @@
        SERVIÇOS
        ============================================ -->
   <section id="servicos">
-    <h2 class="section-title">Serviços</h2>
+        <h2 class="section-title">Serviços &amp; Comodidades</h2>
     <div class="servicos-grid">
 
       <div class="servico-card">
-        <div class="emoji">💪</div>
-        <h4>Academia</h4>
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Academia do hotel" loading="lazy" onerror="this.hidden = true" />
+        <div class="servico-conteudo">
+          <span class="numero" aria-hidden="true">01</span>
+          <h4>Academia</h4>
+        </div>
       </div>
 
       <div class="servico-card">
-        <div class="emoji">☕</div>
-        <h4>Café da Manhã</h4>
+        <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Café da manhã servido no hotel" loading="lazy" onerror="this.hidden = true" />
+        <div class="servico-conteudo">
+          <span class="numero" aria-hidden="true">02</span>
+          <h4>Café da Manhã</h4>
+        </div>
       </div>
 
       <div class="servico-card">
-        <div class="emoji">👕</div>
-        <h4>Lavanderia</h4>
+        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Lavanderia do hotel" loading="lazy" onerror="this.hidden = true" />
+        <div class="servico-conteudo">
+          <span class="numero" aria-hidden="true">03</span>
+          <h4>Lavanderia</h4>
+        </div>
       </div>
 
       <div class="servico-card">
-        <div class="emoji">🍽️</div>
-        <h4>Restaurante</h4>
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Restaurante do hotel" loading="lazy" onerror="this.hidden = true" />
+        <div class="servico-conteudo">
+          <span class="numero" aria-hidden="true">04</span>
+          <h4>Restaurante</h4>
+        </div>
       </div>
 
       <div class="servico-card">
-        <div class="emoji">🏊</div>
-        <h4>Piscina</h4>
+        <img src="https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Piscina do hotel" loading="lazy" onerror="this.hidden = true" />
+        <div class="servico-conteudo">
+          <span class="numero" aria-hidden="true">05</span>
+          <h4>Piscina</h4>
+        </div>
       </div>
 
     </div>
@@ -741,9 +1429,11 @@
     <h2 class="section-title">Onde Estamos</h2>
     <div class="localizacao-box">
       <div class="endereco">
+        <span class="eyebrow">Americana, São Paulo</span><br />
         <strong>Av. Brasil, 2801</strong><br />
         Parque Res. Nardini — Americana / SP<br />
-        CEP: 13468-390
+        CEP: 13468-390<br />
+        <a class="map-link" href="https://maps.google.com/maps?q=Av.+Brasil,+2801+-+Parque+Res.+Nardini,+Americana+-+SP,+13468-390" target="_blank" rel="noopener">Ver no mapa</a>
       </div>
       <iframe
         src="https://maps.google.com/maps?q=Av.+Brasil,+2801+-+Parque+Res.+Nardini,+Americana+-+SP,+13468-390&t=&z=16&ie=UTF8&iwloc=&output=embed"
@@ -759,7 +1449,8 @@
        RODAPÉ
        ============================================ -->
   <footer>
-    Hotel Travesseiro Nervoso &copy; 2026 — Aqui, até a insônia dorme.
+    Hotel Travesseiro Nervoso &copy; 2026<br />
+    Aqui, até a insônia dorme. &nbsp; Americana — SP
   </footer>
 
   <!-- ============================================
