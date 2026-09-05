@@ -1125,7 +1125,7 @@
     section {
       width: min(100%, var(--container));
       margin: 0 auto;
-      padding: 112px clamp(20px, 5vw, 56px);
+      padding: 64px clamp(20px, 5vw, 56px);
     }
 
     .section-title {
@@ -1157,13 +1157,56 @@
     .reserva-form button { border-radius: 0; background: var(--night); transition: background .25s ease, transform .25s ease; }
     .reserva-form button:hover { background: var(--champagne); transform: translateY(-2px); }
 
-    .quartos-grid { gap: 26px; }
-    .quarto-card { padding: 0 0 26px; overflow: hidden; text-align: left; transition: transform .3s ease, box-shadow .3s ease; }
+    .quartos-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .quarto-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: clamp(350px, 32vw, 430px);
+      padding: 0;
+      overflow: hidden;
+      text-align: left;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
     .quarto-card:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(25,24,21,.14); }
-    .quarto-card img { height: clamp(240px, 28vw, 360px); margin-bottom: 22px; border-radius: 0; filter: saturate(.82); transition: transform .5s ease, filter .5s ease; }
+    .quarto-card img {
+      grid-column: 2;
+      grid-row: 1;
+      height: 100%;
+      margin: 0;
+      border-radius: 0;
+      object-fit: cover;
+      filter: saturate(.82);
+      transition: transform .5s ease, filter .5s ease;
+    }
+    .quarto-card:nth-child(even) img { grid-column: 1; }
+    .quarto-info {
+      display: flex;
+      grid-column: 1;
+      grid-row: 1;
+      flex-direction: column;
+      justify-content: center;
+      padding: 38px;
+    }
+    .quarto-card:nth-child(even) .quarto-info { grid-column: 2; }
+    .quarto-card h3 { padding: 0; }
+    .quarto-descricao {
+      max-width: 360px;
+      margin: 9px 0 18px;
+      color: var(--ink-soft);
+      font-size: .78rem;
+      line-height: 1.65;
+    }
+    .quarto-card .preco { padding: 0; }
     .quarto-card:hover img { transform: scale(1.025); filter: saturate(1); }
-    .quarto-card h3 { padding: 0 24px; color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.85rem; font-weight: 600; }
-    .quarto-card .preco { padding: 0 24px; color: var(--ink); font-size: 1rem; font-weight: 700; }
+    .quarto-card h3 { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.85rem; font-weight: 600; }
+    .quarto-card .preco { color: var(--ink); font-size: 1rem; font-weight: 700; }
     .quarto-card .preco span { color: var(--ink-soft); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
 
     .servicos-grid { gap: 0; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -1180,7 +1223,6 @@
 
     #chat { background: #eeece7; max-width: none; }
     #chat > * { max-width: 860px; margin-left: auto; margin-right: auto; }
-    #chat .section-title { max-width: var(--container); }
     .chat-container { max-width: 860px; }
     .chat-header { background: var(--night); padding: 22px 26px; color: #fff; font-size: .72rem; letter-spacing: .14em; }
     .chat-messages { height: 400px; background: #fbfaf7; }
@@ -1205,9 +1247,24 @@
       .site-nav { align-items: flex-start; }
       .main-nav { display: none; }
       header h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
-      section { padding-top: 78px; padding-bottom: 78px; }
+      section { padding-top: 48px; padding-bottom: 48px; }
       #reserva { margin-top: -28px; }
       .reserva-form { padding: 22px 18px; }
+      .quarto-card {
+        display: block;
+        min-height: 0;
+      }
+      .quarto-card img {
+        display: block;
+        height: clamp(230px, 62vw, 330px);
+      }
+      .quarto-card .quarto-info,
+      .quarto-card:nth-child(even) .quarto-info {
+        display: flex;
+        padding: 24px;
+      }
+      .quarto-card img,
+      .quarto-card:nth-child(even) img { grid-column: auto; }
       .servicos-grid { grid-template-columns: repeat(2, 1fr); }
       .servico-card { border-bottom: 1px solid var(--line); }
       .servico-card:nth-child(2n) { border-right: 0; }
@@ -1307,20 +1364,29 @@
 
       <div class="quarto-card">
         <img src="/imagens/quarto standart.jpg" alt="Quarto Standard">
-        <h3>Standard</h3>
-        <p class="preco">R$ 500 <span>/ noite</span></p>
+        <div class="quarto-info">
+          <h3>Standard</h3>
+          <p class="quarto-descricao">Conforto e praticidade em um ambiente acolhedor, ideal para uma estadia tranquila e agradável.</p>
+          <p class="preco">R$ 500 <span>/ noite</span></p>
+        </div>
       </div>
 
       <div class="quarto-card">
         <img src="/imagens/quarto deluxe.jpg" alt="Quarto Deluxe">
-        <h3>Deluxe</h3>
-        <p class="preco">R$ 700 <span>/ noite</span></p>
+        <div class="quarto-info">
+          <h3>Deluxe</h3>
+          <p class="quarto-descricao">Uma experiência mais refinada, com atmosfera elegante e pensada para quem busca ainda mais conforto.</p>
+          <p class="preco">R$ 700 <span>/ noite</span></p>
+        </div>
       </div>
 
       <div class="quarto-card">
         <img src="/imagens/quarto suite presidencial.jpg" alt="Suíte Presidencial">
-        <h3>Suíte Presidencial</h3>
-        <p class="preco">R$ 1.000 <span>/ noite</span></p>
+        <div class="quarto-info">
+          <h3>Suíte Presidencial</h3>
+          <p class="quarto-descricao">Exclusividade e sofisticação em uma acomodação premium, criada para proporcionar uma experiência memorável.</p>
+          <p class="preco">R$ 1.000 <span>/ noite</span></p>
+        </div>
       </div>
 
     </div>
@@ -1330,7 +1396,6 @@
        CHAT COM ATENDENTE VIRTUAL
        ============================================ -->
   <section id="chat">
-        <h2 class="section-title">Concierge Virtual</h2>
     <div class="chat-container">
 
       <div class="chat-header">
